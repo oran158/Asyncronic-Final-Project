@@ -45,7 +45,7 @@ export class Item//for collection categories
     }
 }
 
-async function addProduct(product)//function that add product to cost collections
+export async function addProduct(product)//function that add product to cost collections
 {
     const client = new MongoClient(uri);//create object that can talk with mongodb
 
@@ -63,7 +63,7 @@ async function addProduct(product)//function that add product to cost collection
     }
 }
 
-async function addUser(user)//function that add user to user collections
+export default async function addUser(user)//function that add user to user collections
 {
     const client = new MongoClient(uri);//create object that can talk with mongodb
 
@@ -82,7 +82,7 @@ async function addUser(user)//function that add user to user collections
     }
 }
 
-async function addCat(item)////function that add item to categories collections
+export async function addCat(item)////function that add item to categories collections
 {
     const client = new MongoClient(uri);//create object that can talk with mongodb
 
@@ -101,7 +101,7 @@ async function addCat(item)////function that add item to categories collections
     }
 }
 
-async function display(res)//function that mange the addition of object and call function
+export async function display(res)//function that mange the addition of object and call function
  {
     const pro = new Product(123, 'chair', 100, 'home', date, 'bought new chair to home');
     const pro1 = new Product(306, 'table', 150, 'home', date, 'bought new table to home');
@@ -118,14 +118,4 @@ async function display(res)//function that mange the addition of object and call
    // return report;
 }
 
-export{addUser,addProduct,addCat,display};
-
-
-
-
-
-
-
-
-
-<!-- Yonatan Avizov | 318432101 , Oran Cohen | 208585877 -->
+// Yonatan Avizov | 318432101 , Oran Cohen | 208585877

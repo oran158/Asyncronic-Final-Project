@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var answer = 'answer from request id function';
+import express from 'express';
+
+const costRouter = express.Router();
+const answer = 'answer from request id function';
 
 /* GET home page for  specific user after login. */
 
-router.get('/user/:id',async  function(req, res, next) {
+costRouter.get('/user/:id',async  function(req, res, next) {
   const memberDetails = {
     title:'My cost list ',
     member:answer,
@@ -13,4 +14,4 @@ router.get('/user/:id',async  function(req, res, next) {
 
 });
 
-module.exports = router;
+export default costRouter;

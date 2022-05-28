@@ -2,22 +2,24 @@
 //start server here
 import express from "express";
 import path from 'path';
-import costRouter from './routes/cost.js';
 import usersRouter from './routes/users.js';
+import costRouter from './routes/cost.js';
 import http from "http";
 import createError from 'http-errors';
+import {fileURLToPath} from 'url';
 
 const port=1030;
+const __filename = fileURLToPath(import.meta.url);
 const app = express();
 
 app.set('port',process.env.PORT||port);//whice port the app is going to listen
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.dirname(__filename+'/views'));
 app.set('view engine', 'pug');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.dirname(__filename+'/views')));
 
 //localhost:1030/?id=318
 // localhost:1030/users/318/
@@ -53,4 +55,4 @@ const shutdown = function () {
 };
 boot();
 
-module.exports = app;
+export default app;

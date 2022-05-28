@@ -1,15 +1,11 @@
 //mange all the mongo db function
+import {MongoClient} from "mongodb";
 
-
-const  url =require("url");
-const {MongoClient} = require("mongodb");
 const Oran="mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test";
 const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test"
 const uri = Yonatan;
 const today = new Date();
 const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-
 
 async function outputReportById(id,year,month)//out put report by user id year and month
 {
