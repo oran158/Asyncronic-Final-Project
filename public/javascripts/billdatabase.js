@@ -36,7 +36,6 @@ async function outputReportById(id,year,month)//out put report by user id year a
             }
             console.log('the report for the year is succeed');
             return str;
-
         }
 
         if (year != null && month != null)//for month report
