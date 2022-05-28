@@ -1,5 +1,11 @@
 //the main js file of the app
 //start server here
+
+//28.5
+//1. logic for user __put localhost:1030/318 will show user 318 page.
+//2. logic for adding users - to do query.
+//3. add comments for each function and file.
+
 import express from "express";
 import path from 'path';
 import usersRouter from './routes/users.js';
