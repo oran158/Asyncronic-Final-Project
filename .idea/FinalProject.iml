@@ -10,5 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="frontedfinal" />
     <orderEntry type="module" module-name="simpleRecpiees" />
+    <orderEntry type="module" module-name="front" />
   </component>
 </module>

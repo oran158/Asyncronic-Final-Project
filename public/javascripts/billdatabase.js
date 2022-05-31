@@ -7,7 +7,8 @@ const uri = Yonatan;
 const today = new Date();
 const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
-async function outputReportById(id,year,month)//out put report by user id year and month
+//function that output report by id month and year ,using by split .
+export async function outputReportById(id, year, month)
 {
     const client = new MongoClient(uri);
 

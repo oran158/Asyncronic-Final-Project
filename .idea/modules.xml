@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FinalProject.iml" filepath="$PROJECT_DIR$/.idea/FinalProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../WebstormProjects/front/.idea/front.iml" filepath="$PROJECT_DIR$/../WebstormProjects/front/.idea/front.iml" />
       <module fileurl="file://$PROJECT_DIR$/../frontedfinal/.idea/frontedfinal.iml" filepath="$PROJECT_DIR$/../frontedfinal/.idea/frontedfinal.iml" />
       <module fileurl="file://$PROJECT_DIR$/../simpleRecpiees/.idea/simpleRecpiees.iml" filepath="$PROJECT_DIR$/../simpleRecpiees/.idea/simpleRecpiees.iml" />
     </modules>

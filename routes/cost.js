@@ -1,16 +1,23 @@
 import express from 'express';
-
+import {outputReportById} from '../public/javascripts/billdatabase.js';
+//output report
 const costRouter = express.Router();
 const answer = 'answer from request id function';
 
 /* GET home page for  specific user after login. */
-
+//sending to report function with parameters and return it as json
 costRouter.get('/user/:id',async  function(req, res, next) {
-  const memberDetails = {
-    title:'My cost list ',
-    member:answer,
+  try {
+    let outputResponse = outputReportById(req.params.id,req.params.year,req.params.month);
+    res.json(outputResponse);
   }
-  res.render('layout', memberDetails);
+  catch (e)
+  {
+    if (e)
+    {
+      res.status(404);
+    }
+  }
 
 });
 
