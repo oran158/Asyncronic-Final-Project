@@ -40,7 +40,6 @@ export class Item//for collection categories
     constructor(name,cate) {
         this.name = name;
         this.cate=cate;
-
     }
 }
 

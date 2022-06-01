@@ -16,11 +16,9 @@ import createError from 'http-errors';
 import {fileURLToPath} from 'url';
 import req from "express/lib/request.js";
 
-const port=1030;
 const __filename = fileURLToPath(import.meta.url);
 const app = express();
-
-const params = new URLSearchParams(newURL);
+const port = 1030;
 
 app.set('port',process.env.PORT||port);//whice port the app is going to listen
 // view engine setup
@@ -32,15 +30,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.dirname(__filename+'/views')));
 
 //localhost:1030/?id=318
+app.use('/',usersRouter);
+
 // localhost:1030/users/318/
-//http://localhost:1030/?id=318&year=2022&month=05&product=&sum=&category=&description  =>>>>> path for output report
-app.use('/?id='+params.get('id')+'&year='+params.get('year')+'&month='+params.get('month')+'&product=&sum=&category=&description=', costRouter);//cost will out the report by id ,year , month
-//http://localhost:1030/?id=318&year=&month=&product=ladder&sum=10&category=home&description=to+home =>>>>> path for add product
-app.use('/?id='+params.get('id')+'&year=&month=&'+'&product='+params.get('product')+'&sum='+params.get('sum')+'&category='+params.get('category')+'&description='+params.get('description'), usersRouter);//router that add me  new product to cost collection
+//app.use('/user', costRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+//  next(createError(404));
 });
 
 // error handler

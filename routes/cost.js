@@ -6,7 +6,7 @@ const answer = 'answer from request id function';
 
 /* GET home page for  specific user after login. */
 //sending to report function with parameters and return it as json
-costRouter.get('/user/:id',async  function(req, res, next) {
+costRouter.get('/:id',async  function(req, res, next) {
   try {
     let outputResponse = outputReportById(req.params.id,req.params.year,req.params.month);
     res.json(outputResponse);
