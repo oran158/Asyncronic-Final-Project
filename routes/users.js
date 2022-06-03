@@ -18,7 +18,7 @@ const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.ge
 
 usersRouter.get('/',async function(req, res, next){
   console.log('home page loaded');
-  res.render('index');
+  res.render('report');
 });
 
 export default usersRouter;
