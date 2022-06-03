@@ -11,28 +11,22 @@ const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.ge
 export async function outputReportById(id, year, month)
 {
     const client = new MongoClient(uri);
-
+    console.log('i am in report function ');
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-
-        let answer=await client.db('bills').collection('cost').find( { 'id':id});
+        let answer=await client.db('bills').collection('cost').find( { 'id':id});//error bug answer=>ar
         let ar= await answer.toArray();
+        console.log(answer.toString());
         await answer.close();
-        let str = "";
-        if (year != null && month == null) //for year report
-        {
-            console.log('the report is for the year');
-            for(let item of ar)
-            {
-                const myArray = item.date.split("-");
+        if (year != null && month == null){ //for year report
+            return ar.filter((data) => {
+                const myArray = data.date.split("-");
                 let itemYear = myArray[0];
-                if (itemYear == year.toString()){
-                    str += item.name+ '\t' +item.date + '\n';
+                if (itemYear === year) {
+                    return data;
                 }
-            }
-            console.log('the report for the year is succeed');
-            return str;
+            });
         }
 
         if (year != null && month != null)//for month report
@@ -42,17 +36,17 @@ export async function outputReportById(id, year, month)
                 const myArray = item.date.split("-");
                 let itemYear = myArray[0];
                 let itemMonth = myArray[1];
-                if (itemYear == year.toString() && itemMonth == month.toString()) {
-                    str += item.name + '\t' + item.date + '\n';
+                if (itemYear === year.toString() && itemMonth === month.toString()) {
+
                 }
             }
             console.log('the report  for the month is succeed');
-            return str;
+            return ar;
 
         }
-
+        console.log('the report is for only id'+ id );
         return ar; //for all ID report
-        console.log('the report is for only id');
+
     } catch (e) {
         console.error('the output has been failed');
     } finally {
