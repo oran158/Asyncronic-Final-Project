@@ -20,5 +20,13 @@ usersRouter.get('/',async function(req, res, next){
   console.log('home page loaded');
   res.render('report');
 });
+/* GET users listing. */
+usersRouter.post('/login', async function (req, res, next) {
+
+  const username = req.body.username;
+
+res.render('report',{title:username,message:username});
+});
+
 
 export default usersRouter;

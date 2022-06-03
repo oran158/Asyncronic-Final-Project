@@ -1,0 +1,26 @@
+
+
+extends layout
+
+block content
+  div.text-center
+    form(class="form-signin" method="POST" action="/users/login")
+      #error
+        if error
+          p.text-danger Error!!!
+
+      - var h1Classes = ['h3', 'mb-3', 'font-weight-normal']
+      h1(class=h1Classes) Please sign in
+
+      //-input ID
+      label( for="inputId" class="sr-only") User Id:
+      input(type="text" name="username" id="inputId" class="form-control" placeholder="Username" required autofocus)
+
+
+
+      //-signIn button
+      - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+      button(class=buttonClass type="submit") Sign in
+
+      - var pClasses=['mt-5', 'mb-3', 'text-muted'];
+      p(class=pClasses) &copy; 2017-2018

@@ -8,11 +8,9 @@
 //5. get right path to check the router to functions
 
 import express from "express";
-import path from 'path';
 import usersRouter from './routes/users.js';
 import costRouter from './routes/cost.js';
-import createError from 'http-errors';
-import {fileURLToPath} from 'url';
+
 
 const app = express();
 const port = 1030;
@@ -30,6 +28,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.use('/costs', costRouter);
+app.use('/users',usersRouter);
+app.get('', async (req, res) => {
+    res.render('homepage', { title: 'Welcome to Cost Report App' })
+});
 
 app.listen(app.get('port'),async  function () {
  //start the server that doesn't listen to client ger request
