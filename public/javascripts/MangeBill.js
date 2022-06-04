@@ -9,7 +9,7 @@ import {MongoClient} from "mongodb";
 
 const Oran="mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test";
 const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test"
-const uri = Yonatan;
+const uri = Oran;
 
 
 export class User//for collection user
@@ -26,13 +26,14 @@ export class User//for collection user
 export class Product//for collection cost
 {
     constructor(id,name,sum,cate,date,des) {
-        this.id=id;
+        this.id = id;
         this.name = name;
         this.sum = sum;
-        this.cate=cate;
-        this.date=date;
-        this.des=des;
+        this.cate = cate;
+        this.date = date;
+        this.des = des;
     }
+    msg = () => {return 'name: ' + this.name + 'description: ' + this.des}
 }
 
 export class Item//for collection categories
@@ -98,22 +99,3 @@ export async function addCat(item)////function that add item to categories colle
         await client.close();
     }
 }
-
-export async function display(res)//function that mange the addition of object and call function
- {
-    const pro = new Product(123, 'chair', 100, 'home', date, 'bought new chair to home');
-    const pro1 = new Product(306, 'table', 150, 'home', date, 'bought new table to home');
-    const user = new User(123, 'Yonatan', 'Avizov', 200997, 'single');
-    const user1 = new User(306, 'Oran', 'Cohen', 100297, 'Relationship');
-    const user2 = new User(318, 'Asaf', 'Dangoor', 150496, 'single');
-    const item = new Item('Laptop', 'Work');
-    const item1 = new Item('Clothes', 'Private');
-  //  await addProduct(pro);
-   //await addUser(user1);
-     //await addUser(user2);
-    //await addCat(item1);
-    //const report = await outputReportById(123, null, null);
-   // return report;
-}
-
-// Yonatan Avizov | 318432101 , Oran Cohen | 208585877

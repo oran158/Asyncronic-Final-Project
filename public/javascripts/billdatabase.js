@@ -30,15 +30,14 @@ export async function outputReportById(id, year, month)
         if (year != null && month != null)
         {
             console.log('The report is for the month');
-            for(let item of answer) {
-                const myArray = item.date.split("-");
+            return answer.filter((data) => {
+                const myArray = data.date.split("-");
                 let itemYear = myArray[0];
                 let itemMonth = myArray[1];
-                if (itemYear === year.toString() && itemMonth === month.toString()) {
+                if (itemYear === year && itemMonth === month) {
+                    return data;
                 }
-            }
-            console.log('The report  for the month is succeed');
-            return answer;
+            });
         }
         //for all ID report
         console.log(answer);

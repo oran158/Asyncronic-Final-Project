@@ -1,0 +1,48 @@
+html
+    head
+        title=title
+    body
+        h1=message
+        form(class="form-signin" method="POST" action="./login/addProduct")
+            //-add name
+            label( for="inputName" class="sr-only") Name:
+            input(type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus)
+
+            //-input sum
+            label( for="inputSum" class="sr-only") Sum:
+            input(type="text" name="sum" id="inputSum" class="form-control" placeholder="Sum" required autofocus)
+
+            //-input cate
+            label( for="inputCate" class="sr-only") Category:
+            input(type="text" name="cate" id="inputCate" class="form-control" placeholder="Category" required autofocus)
+
+            //-input des
+            label( for="inputDes" class="sr-only") Description:
+            input(type="text" name="des" id="inputDes" class="form-control" placeholder="Description" required autofocus)
+
+            //-signIn button
+            - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+            button(class=buttonClass type="submit") Add product
+
+            - var pClasses=['mt-5', 'mb-3', 'text-muted'];
+
+        form(class="form-signin" method="POST" action="./login/report")
+            #error
+                if error
+                    p.text-danger Error!!!
+
+            //-input year
+            label( for="inputYear" class="sr-only") Year:
+            input(type="text" name="year" id="inputYear" class="form-control" placeholder="Year" required autofocus)
+
+            //-input month
+            label( for="inputMonth" class="sr-only") Month:
+            input(type="text" name="month" id="inputMonth" class="form-control" placeholder="Month" required autofocus)
+
+            //-signIn button
+            - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+            button(class=buttonClass type="submit") Get report
+
+            - var pClasses=['mt-5', 'mb-3', 'text-muted'];
+
+        p=info
