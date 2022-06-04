@@ -1,16 +1,8 @@
 //the main js file of the app
 //start server here
-
-//28.5
-//1. logic for user __put localhost:1030/318 will show user 318 page.
-//2. logic for adding users - to do query.
-//4.how to get url
-//5. get right path to check the router to functions
-
 import express from "express";
 import usersRouter from './routes/users.js';
 import costRouter from './routes/cost.js';
-
 
 const app = express();
 const port = 1030;

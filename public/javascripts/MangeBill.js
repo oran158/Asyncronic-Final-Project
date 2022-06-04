@@ -1,16 +1,8 @@
-/*
-To do 15-5:
-1. Display get inputs from by id function (do this with async.then() => ()) - V
-2. Return proper input with HTML. - V
-3. Inside HTML parse information for display in.
-*/
-
 import {MongoClient} from "mongodb";
 
 const Oran="mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test";
 const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test"
 const uri = Oran;
-
 
 export class User//for collection user
 {
@@ -33,7 +25,7 @@ export class Product//for collection cost
         this.date = date;
         this.des = des;
     }
-    msg = () => {return 'name: ' + this.name + 'description: ' + this.des}
+    msg = () => {return 'name: ' + this.name + 'description: ' + this.des} //need to fix
 }
 
 export class Item//for collection categories
