@@ -15,10 +15,10 @@ usersRouter.get('/',async function(req, res, next){
 /* GET users listing. */
 usersRouter.post('/login', async function (req, res, next) {
   const userID = req.body.username;
- let ar= await outputReportById(userID);
+ let ar= outputReportById(userID);
 
 
-res.render('report',{title:userID,message:userID,info:ar.length.toString()});
+res.render('report',{title:userID,message:userID,info:ar.toString()});
 });
 
 

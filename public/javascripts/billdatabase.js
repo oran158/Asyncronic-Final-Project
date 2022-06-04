@@ -15,11 +15,12 @@ export async function outputReportById(id, year, month)
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-        let answer=await client.db('bills').collection('cost').find( { 'id':id});//error bug answer=>ar
-        let ar= await answer.toArray();
+        let answer= await client.db('bills').collection('cost').find( { 'id':id});//error bug answer=>ar
+        const ar= await answer.toArray();
         console.log(answer.toString());
         await answer.close();
-        if (year != null && month == null){ //for year report
+        //for year report
+        if (year != null && month == null){
             return ar.filter((data) => {
                 const myArray = data.date.split("-");
                 let itemYear = myArray[0];
@@ -29,7 +30,8 @@ export async function outputReportById(id, year, month)
             });
         }
 
-        if (year != null && month != null)//for month report
+        //for month report
+        if (year != null && month != null)
         {
             console.log('the report is for the month');
             for(let item of ar) {
@@ -45,7 +47,9 @@ export async function outputReportById(id, year, month)
 
         }
         console.log('the report is for only id'+ id );
-        return ar; //for all ID report
+        //for all ID report
+        return ar;
+
 
     } catch (e) {
         console.error('the output has been failed');
