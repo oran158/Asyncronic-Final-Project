@@ -22,11 +22,11 @@ app.use(express.static('public'));
 app.use('/costs', costRouter);
 app.use('/users',usersRouter);
 app.get('', async (req, res) => {
-    res.render('homepage', { title: 'Welcome to Cost Report App' })
+    res.render('homepage')
 });
 
+//start the server that doesn't listen to client ger request
 app.listen(app.get('port'),async  function () {
- //start the server that doesn't listen to client ger request
     console.info('listening on port ' + app.get('port'));
   });
 

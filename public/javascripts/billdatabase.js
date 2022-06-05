@@ -2,14 +2,13 @@
 import {MongoClient} from "mongodb";
 
 const Oran="mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test";
-const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test"
-const uri = Oran;
+const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test";
+const uri = Yonatan;
 const today = new Date();
 const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
 //function that output report by id month and year ,using by split .
-export async function outputReportById(id, year, month)
-{
+export async function outputReportById(id, year, month) {
     const client = new MongoClient(uri);
     console.log('i am in report function ');
     try {
@@ -27,8 +26,7 @@ export async function outputReportById(id, year, month)
             });
         }
         //for month report
-        if (year != null && month != null)
-        {
+        if (year != null && month != null) {
             console.log('The report is for the month');
             return answer.filter((data) => {
                 const myArray = data.date.split("-");
