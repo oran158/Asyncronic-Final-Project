@@ -2,7 +2,7 @@ import {MongoClient} from "mongodb";
 
 const Oran="mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test";
 const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test"
-const uri = Yonatan;
+const uri = Oran;
 
 export class User//class of user
 {
@@ -13,6 +13,7 @@ export class User//class of user
         this.birth=birth;
         this.metiral=material;
     }
+    msg = () => {return 'ID: ' + this.id + 'First name: ' + this.firstname} //need to fix
 }
 
 export class Product//class of product
@@ -25,9 +26,7 @@ export class Product//class of product
         this.date = date;
         this.des = des;
     }
-
     msg = () => {return 'name: ' + this.name + 'description: ' + this.des} //need to fix
-
 }
 
 export class Item//class of category of product

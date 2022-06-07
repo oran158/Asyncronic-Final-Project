@@ -15,6 +15,19 @@ usersRouter.post('/login', async function (req, res, next) {
   res.render('userPage',{title:userID,message:userID,info:JSON. stringify(ar)});
 });
 
+//
+usersRouter.post('/singUp', async function (req, res, next) {
+  console.log('user sing up');
+  let id = parseInt(req.body.id);
+  let first_name = req.body.sum;
+  let last_name = req.body.cate;
+  let birth = req.body.des;
+  let material = req.body.des;
+  let user = new User(id,first_name,last_name,birth,material);
+  await addUser(user);
+  res.render('userSingUp',{title:'Sing up',message:'User ' + userID + ' has been added',info:user.msg});
+});
+
 //getting from the page all the details of the product => calling to add product function => return of succeed message
 usersRouter.post('/login/addProduct',async function(req, res, next){
   console.log('user page');
