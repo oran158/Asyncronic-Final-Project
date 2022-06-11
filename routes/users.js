@@ -8,29 +8,29 @@ let userID = 0;
 
 /* POST users listing. */
 
-//getting user name ad id number => calling for output report => return as json the report
+//getting user name and id number => calling for output report => return as json the report
 usersRouter.post('/login', async function (req, res, next) {
-  userID = parseInt(req.body.username);
+  userID = parseInt(req.body.id);
   let ar = await outputReportById(userID);
   res.render('userPage',{title:userID,message:userID,info:JSON. stringify(ar)});
 });
 
-//
+//getting from the page all the details of the new user => calling to add user function => return of succeed message
 usersRouter.post('/singUp', async function (req, res, next) {
   console.log('user sing up');
   let id = parseInt(req.body.id);
-  let first_name = req.body.sum;
-  let last_name = req.body.cate;
-  let birth = req.body.des;
-  let material = req.body.des;
+  let first_name = req.body.firstname;
+  let last_name = req.body.lastname;
+  let birth = req.body.birth;
+  let material = req.body.material;
   let user = new User(id,first_name,last_name,birth,material);
   await addUser(user);
-  res.render('userSingUp',{title:'Sing up',message:'User ' + userID + ' has been added',info:user.msg});
+  res.render('userSingUp',{title:'Sing up',message:'Welcome, Please sing up'});
 });
 
 //getting from the page all the details of the product => calling to add product function => return of succeed message
 usersRouter.post('/login/addProduct',async function(req, res, next){
-  console.log('user page');
+  console.log('user page - add product');
   let name = req.body.name;
   let sum = parseInt(req.body.sum);
   let cate = req.body.cate;
@@ -42,7 +42,7 @@ usersRouter.post('/login/addProduct',async function(req, res, next){
 
 //getting the year and the month for the report =>send the details to the function => return as json file the report
 usersRouter.post('/login/report',async function(req, res, next){
-  console.log('user page');
+  console.log('user page - report');
   let year = req.body.year;
   let month = req.body.month;
   let ar = await outputReportById(userID,year,month);
