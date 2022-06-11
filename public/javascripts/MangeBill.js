@@ -13,7 +13,6 @@ export class User//class of user
         this.birth=birth;
         this.metiral=material;
     }
-    msg = () => {return 'ID: ' + this.id + 'First name: ' + this.firstname} //need to fix
 }
 
 export class Product//class of product
@@ -26,7 +25,6 @@ export class Product//class of product
         this.date = date;
         this.des = des;
     }
-    msg = () => {return 'name: ' + this.name + 'description: ' + this.des} //need to fix
 }
 
 export class Item//class of category of product

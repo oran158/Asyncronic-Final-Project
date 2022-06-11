@@ -36,8 +36,9 @@ usersRouter.post('/login/addProduct',async function(req, res, next){
   let cate = req.body.cate;
   let des = req.body.des;
   let prod = new Product(userID,name,sum,cate,date,des);
+  let info = 'Product (name: ' + name + ', description: ' + des + ') has been added for ' + userID
   await addProduct(prod);
-  res.render('alertAddProduct',{title:'User ' + userID,message:'Product has been added for ' + userID,info:prod.msg});
+  res.render('alertAddProduct',{title:'User ' + userID,message:'User ' + userID,info:info});
 });
 
 //getting the year and the month for the report =>send the details to the function => return as json file the report
