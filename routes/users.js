@@ -17,7 +17,6 @@ usersRouter.post('/login', async function (req, res, next) {
 
 //getting from the page all the details of the new user => calling to add user function => return of succeed message
 usersRouter.post('/signUp', async function (req, res, next) {
-  console.log('user sign up');
   res.render('userSignUp',{title:'Sign up',message:'Welcome, Please sign up'});
 });
 
@@ -31,8 +30,7 @@ usersRouter.post('/signUp/addUser', async function (req, res, next) {
   let material = req.body.material;
   let user = new User(id,first_name,last_name,birth,material);
   await addUser(user);
-  let ar = await outputReportById(id);
-  res.render('userPage',{title:id,message:id,info:JSON. stringify(ar)});
+  res.render('alertAddUser',{title:id,message:"Please confirm your ID"});
 });
 
 //getting from the page all the details of the product => calling to add product function => return of succeed message
