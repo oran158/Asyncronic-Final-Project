@@ -7,11 +7,11 @@ const uri = Oran;
 export class User//class of user
 {
     constructor(id,firstname,lastname,birth,material) {
-        this.id=id;
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birth=birth;
-        this.metiral=material;
+        this.birth = birth;
+        this.material = material;
     }
 }
 
@@ -34,6 +34,7 @@ export class Item//class of category of product
         this.cate=cate;
     }
 }
+
 //function that add product to cost collections
 export async function addProduct(product)
 {
@@ -42,7 +43,6 @@ export async function addProduct(product)
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-
         // Make the appropriate DB calls
         await client.db('bills').collection('cost').insertOne(product);
         console.log('product has just added to cost collection');
@@ -52,6 +52,7 @@ export async function addProduct(product)
         await client.close();
     }
 }
+
 //function that add user to user collections
 export default async function addUser(user) {
     const client = new MongoClient(uri);//create object that can talk with mongodb
@@ -59,14 +60,14 @@ export default async function addUser(user) {
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-
         // Make the appropriate DB calls
         await client.db('bills').collection('user').insertOne(user);
         console.log('user has just added to user collection');
     } catch (e) {
         console.error(e.errmsg+'the user addition has just failed');
     } finally {
-        await client.close();}}
+        await client.close();}
+}
 
 //function that add item to categories collections
 export async function addCat(item) {
@@ -75,7 +76,6 @@ export async function addCat(item) {
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-
         // Make the appropriate DB calls
         console.log('item has just added to categories collection');
         await client.db('bills').collection('categories').insertOne(item);
@@ -83,4 +83,5 @@ export async function addCat(item) {
         console.error(e.errmsg+'the bills addition has just failed');
     } finally {
         await client.close();
-    }}
+    }
+}

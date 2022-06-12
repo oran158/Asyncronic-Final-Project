@@ -18,14 +18,14 @@ block content
       - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
       button(class=buttonClass type="submit") Sign in
 
-    form(class="form-signin" method="POST" action="/users/singUp")
+    form(class="form-signin" method="POST" action="/users/signUp")
       #error
         if error
           p.text-danger Error!!!
 
       //-signIn button
       - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
-      button(class=buttonClass type="submit") Sing Up here
+      button(class=buttonClass type="submit") Sign Up here
 
       - var pClasses=['mt-5', 'mb-3', 'text-muted'];
       p(class=pClasses) &copy; Yonatan & Oran

@@ -16,16 +16,23 @@ usersRouter.post('/login', async function (req, res, next) {
 });
 
 //getting from the page all the details of the new user => calling to add user function => return of succeed message
-usersRouter.post('/singUp', async function (req, res, next) {
-  console.log('user sing up');
+usersRouter.post('/signUp', async function (req, res, next) {
+  console.log('user sign up');
+  res.render('userSignUp',{title:'Sign up',message:'Welcome, Please sign up'});
+});
+
+//getting from the page all the details of the new user => calling to add user function => return of succeed message
+usersRouter.post('/signUp/addUser', async function (req, res, next) {
+  console.log('user sign up');
   let id = parseInt(req.body.id);
   let first_name = req.body.firstname;
   let last_name = req.body.lastname;
-  let birth = req.body.birth;
+  let birth = parseInt(req.body.birth);
   let material = req.body.material;
   let user = new User(id,first_name,last_name,birth,material);
   await addUser(user);
-  res.render('userSingUp',{title:'Sing up',message:'Welcome, Please sing up'});
+  let ar = await outputReportById(id);
+  res.render('userPage',{title:id,message:id,info:JSON. stringify(ar)});
 });
 
 //getting from the page all the details of the product => calling to add product function => return of succeed message
