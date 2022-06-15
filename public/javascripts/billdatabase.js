@@ -16,7 +16,7 @@ export async function outputReportById(id, year, month) {
         await client.connect();
         let answer = await (client.db('bills').collection('cost').find( { 'id':id}).toArray());//error bug - don't return the right data
         //for year report
-        if (year != null && month == null){
+        if (year != null && (month == null || month === '') ){
             return answer.filter((data) => {
                 const myArray = data.date.split("-");
                 let itemYear = myArray[0];
