@@ -2,7 +2,8 @@ html
     head
         title=title
     body
-        h1=message
+        h1="id:"+message
+        h3="the total cost is :"+total_cost
         form(class="form-signin" method="POST" action="./login/addProduct")
             //-add name
             label( for="inputName" class="sr-only") Name:

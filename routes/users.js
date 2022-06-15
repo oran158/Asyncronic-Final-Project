@@ -1,5 +1,5 @@
 import express from 'express';
-import addUser, {addProduct, Product, User} from "../public/javascripts/MangeBill.js";
+import addUser, {addProduct, getTotalSum, Product, User} from "../public/javascripts/MangeBill.js";
 import {outputReportById} from "../public/javascripts/billdatabase.js";
 const usersRouter = express.Router();
 const today = new Date();
@@ -12,7 +12,8 @@ let userID = 0;
 usersRouter.post('/login', async function (req, res, next) {
   userID = parseInt(req.body.id);
   let ar = await outputReportById(userID);
-  res.render('userPage',{title:userID,message:userID,info:JSON. stringify(ar)});
+  let sum= await getTotalSum(userID);
+  res.render('userPage',{title:userID,message:userID,info:JSON. stringify(ar),total_cost:sum});
 });
 
 //getting from the page all the details of the new user => calling to add user function => return of succeed message

@@ -2,7 +2,7 @@ import {MongoClient} from "mongodb";
 
 const Oran="mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test";
 const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test"
-const uri = Oran;
+const uri = Yonatan;
 
 export class User//class of user
 {
@@ -39,7 +39,8 @@ export class Item//class of category of product
 export async function addProduct(product)
 {
     const client = new MongoClient(uri);//create object that can talk with mongodb
-
+    let id= product.id;
+    let sum= product.sum;
     try {
         // Connect to the MongoDB cluster
         await client.connect();
@@ -48,6 +49,22 @@ export async function addProduct(product)
         console.log('product has just added to cost collection');
     } catch (e) {
         console.error(e.errmsg+'the product addition has just failed');
+    } finally {
+        await client.close();
+    }
+
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+        // update in information collection the new total sum by id
+        let report= await client.db('bills').collection('information').findOneAndUpdate({'id':id},{$inc:sum});
+        if(report == null)
+        {
+            await createTotalSum(id,client);
+        }
+        console.log('product has just added to information collection');
+    } catch (e) {
+        console.error(e.errmsg+'the sum addition has just failed');
     } finally {
         await client.close();
     }
@@ -62,6 +79,7 @@ export default async function addUser(user) {
         await client.connect();
         // Make the appropriate DB calls
         await client.db('bills').collection('user').insertOne(user);
+        await createTotalSum(user,client);
         console.log('user has just added to user collection');
     } catch (e) {
         console.error(e.errmsg+'the user addition has just failed');
@@ -85,3 +103,49 @@ export async function addCat(item) {
         await client.close();
     }
 }
+//function that crate total sum to user that is not exist in information collection
+async function createTotalSum(userid,client)
+{
+    let total=await totalSum(userid,client)
+    await client.db('bills').collection('information').insertOne({'id':userid,'total_sum':total});
+}
+
+
+//calculate the total sum in cost collection by id
+ async function totalSum(userid,client)
+{
+    let total_sum=0;
+    let answer = await (client.db('bills').collection('cost').find( { 'id':userid}).toArray());
+    for (let item in answer)
+    {
+        total_sum+=answer[item].sum;
+    }
+    return total_sum;
+}
+
+//get the total sum from informtion collection by user id
+
+export async function getTotalSum(userid)
+{
+    const client = new MongoClient(uri);//create object that can talk with mongodb
+    let total=0;
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+        // Make the appropriate DB calls
+        let info=await client.db('bills').collection('information').findOne({'id':userid});
+        if(info==null)
+        {
+            await createTotalSum(userid,client);
+            info=await client.db('bills').collection('information').findOne({'id':userid});
+        }
+        total=info.total_sum;
+        console.log('product has just added to cost collection');
+    } catch (e) {
+        console.error(e.errmsg+'  has just failed');
+    } finally {
+        await client.close();
+    }
+    return total;
+}
+
