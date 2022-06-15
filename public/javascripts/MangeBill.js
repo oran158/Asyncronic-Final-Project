@@ -57,7 +57,7 @@ export async function addProduct(product)
         // Connect to the MongoDB cluster
         await client.connect();
         // update in information collection the new total sum by id
-        let report= await client.db('bills').collection('information').findOneAndUpdate({'id':id},{$inc:sum});
+        let report= await client.db('bills').collection('information').findOneAndUpdate({'id':id},{$inc:{"total_sum":sum}});
         if(report == null)
         {
             await createTotalSum(id,client);
