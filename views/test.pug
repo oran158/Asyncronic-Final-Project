@@ -1,0 +1,105 @@
+doctype html
+html(lang='en')
+    head
+        //meta(charset='utf-8')
+        //meta(name='viewport' content='width=device-width,\ initial-scale=1,\ shrink-to-fit=no')
+        //title
+        //link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+        //link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css')
+    body
+        .container
+            br
+            br
+
+            h1.text.text-center="id:" + message
+            h3.text.text-center="the total cost is :" + total_cost
+            br
+            form(class="form-signin" method="POST" action="./login/addProduct")
+                //-add name
+                label( for="inputName" class="sr-only") Name:
+                input(type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus)
+
+                //-input sum
+                label( for="inputSum" class="sr-only") Sum:
+                input(type="text" name="sum" id="inputSum" class="form-control" placeholder="Sum" required autofocus)
+
+                //-input cate
+                label( for="inputCate" class="sr-only") Category:
+                input(type="text" name="cate" id="inputCate" class="form-control" placeholder="Category" required autofocus)
+
+                //-input des
+                label( for="inputDes" class="sr-only") Description:
+                input(type="text" name="des" id="inputDes" class="form-control" placeholder="Description" required autofocus)
+
+
+                //-signIn button
+                - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+                button(class=buttonClass type="submit") Add product
+
+                - var pClasses=['mt-5', 'mb-3', 'text-muted'];
+            br
+            form(class="form-signin" method="POST" action="./login/report")
+                #error
+                    if error
+                        p.text-danger Error!!!
+
+                //-input year
+                label( for="inputYear" class="sr-only") Year:
+                input(type="text" name="year" id="inputYear" class="form-control" placeholder="Year" required autofocus)
+
+                //-input month
+                label( for="inputMonth" class="sr-only") Month:
+                input(type="text" name="month" id="inputMonth" class="form-control" placeholder="Month"  autofocus)
+
+                //-signIn button
+                - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+                button(class=buttonClass type="submit") Get report
+
+                - var pClasses=['mt-5', 'mb-3', 'text-muted'];
+
+            //p=info
+        .container
+            br
+            br
+            br
+            h1.text.text-dark.text-center
+                | Report for the chosen date #{chosenDate}:
+            br
+            br
+            table.table-striped.border-success
+                thead
+                    tr
+                        th(data-field='name')
+                            span.text-dark
+                                | Title
+                        th(data-field='des')
+                            span.text-dark
+                                | Description
+                        th(data-field='cate')
+                            span.text-dark
+                                | Category
+                        th(data-field='sum')
+                            span.text-dark
+                                | Sum
+                        th(data-field='date')
+                            span.text-dark
+                                | Date
+            br
+            br
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+        link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css')
+        script(src='https://code.jquery.com/jquery-3.3.1.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+        script(src='https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js')
+        script(type='text/javascript').
+            $(document).ready(function () {
+                $('table').bootstrapTable({
+                    data: list
+                });
+            });
+
+            // Specify the JSON data to be displayed
+            const list = !{JSON.stringify(info)};
+
+
