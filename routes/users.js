@@ -14,7 +14,7 @@ usersRouter.post('/login', async function (req, res, next) {
   let ar = await outputReportById(userID);
   let sum= await getTotalSum(userID);
   //res.render('userPage',{title:userID,message:userID,info:JSON. stringify(ar),total_cost:sum});
-  res.render('test',{title:userID,message:userID,info:ar,total_cost:sum});
+  res.render('userPage',{title:userID,message:userID,info:ar,total_cost:sum});
 });
 
 //getting from the page all the details of the new user => calling to add user function => return of succeed message
