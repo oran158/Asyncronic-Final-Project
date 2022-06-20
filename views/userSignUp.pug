@@ -1,33 +1,36 @@
 html
     head
         title=title
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+        link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css')
     body
-        h1=message
-        form(class="form-signin" method="POST" action="./signUp/addUser")
-            //-add id
-            label( for="inputID" class="sr-only") ID:
-            input(type="text" name="id" id="inputID" class="form-control" placeholder="ID" required autofocus)
+        .container
+            h1=message
+            form(class="form-signin" method="POST" action="./signUp/addUser")
+                //-add id
+                label( for="inputID" class="sr-only") ID:
+                input(type="text" name="id" id="inputID" class="form-control" placeholder="ID" required autofocus)
 
-            //-input first name
-            label( for="inputFirstName" class="sr-only") First name:
-            input(type="text" name="firstname" id="inputFirstName" class="form-control" placeholder="First name" required autofocus)
+                //-input first name
+                label( for="inputFirstName" class="sr-only") First name:
+                input(type="text" name="firstname" id="inputFirstName" class="form-control" placeholder="First name" required autofocus)
 
-            //-input last name
-            label( for="inputLastName" class="sr-only") Last name:
-            input(type="text" name="lastname" id="inputLastName" class="form-control" placeholder="Last name" required autofocus)
+                //-input last name
+                label( for="inputLastName" class="sr-only") Last name:
+                input(type="text" name="lastname" id="inputLastName" class="form-control" placeholder="Last name" required autofocus)
 
-            //-input birth
-            label( for="inputBirth" class="sr-only") Birth data:
-            input(type="text" name="birth" id="inputBirth" class="form-control" placeholder="Birth data" required autofocus)
+                //-input birth
+                label( for="inputBirth" class="sr-only") Birth data:
+                input(type="text" name="birth" id="inputBirth" class="form-control" placeholder="Birth data" required autofocus)
 
-            //-input material
-            label( for="inputMaterial" class="sr-only") Material:
-            input(type="text" name="material" id="inputMaterial" class="form-control" placeholder="Material" required autofocus)
+                //-input material
+                label( for="inputMaterial" class="sr-only") Material:
+                input(type="text" name="material" id="inputMaterial" class="form-control" placeholder="Material" required autofocus)
 
-            //-sign up button
-            - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
-            button(class=buttonClass type="submit") Sign up
+                //-sign up button
+                - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
+                button(class=buttonClass type="submit") Sign up
 
-            - var pClasses=['mt-5', 'mb-3', 'text-muted'];
+                - var pClasses=['mt-5', 'mb-3', 'text-muted'];
 
-        p=info
+            p=info

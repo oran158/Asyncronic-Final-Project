@@ -8,7 +8,7 @@ let userID = 0;
 
 /* POST users listing. */
 
-//getting user name and id number => calling for output report => return as json the report
+//getting username and id number => calling for output report => return  the report
 usersRouter.post('/login', async function (req, res, next) {
   userID = parseInt(req.body.id);
   let ar = await outputReportById(userID);
@@ -48,7 +48,7 @@ usersRouter.post('/login/addProduct',async function(req, res, next){
   res.render('alertAddProduct',{title:'User ' + userID,message:'User ' + userID,info:info});
 });
 
-//getting the year and the month for the report =>send the details to the function => return as json file the report
+//getting the year and the month for the report =>send the details to the function => return  the report
 usersRouter.post('/login/report',async function(req, res, next){
   console.log('user page - report');
   let year = req.body.year;

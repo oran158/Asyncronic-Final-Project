@@ -57,7 +57,7 @@ export async function addProduct(product)
         // Connect to the MongoDB cluster
         await client.connect();
         // update in information collection the new total sum by id
-        let report= await client.db('bills').collection('information').findOneAndUpdate({'id':id},{$inc:{"total_sum":sum}});
+        let report= await client.db('bills').collection('information').findOneAndUpdate({'id':id},{$inc:{'total_sum':sum}});
         if(report == null)
         {
             await createTotalSum(id,client);
@@ -123,7 +123,7 @@ async function createTotalSum(userid,client)
     return total_sum;
 }
 
-//get the total sum from informtion collection by user id
+//get the total sum from information collection by user id
 
 export async function getTotalSum(userid)
 {
@@ -132,15 +132,15 @@ export async function getTotalSum(userid)
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-        // Make the appropriate DB calls
+        //get to info all details of the userid from information collection
         let info=await client.db('bills').collection('information').findOne({'id':userid});
         if(info==null)
         {
+            //call to create  total sum function to calculate the sum and update it in information collection
             await createTotalSum(userid,client);
             info=await client.db('bills').collection('information').findOne({'id':userid});
         }
         total=info.total_sum;
-        console.log('product has just added to cost collection');
     } catch (e) {
         console.error(e.errmsg+'  has just failed');
     } finally {

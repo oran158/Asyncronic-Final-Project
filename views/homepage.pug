@@ -1,7 +1,9 @@
 extends layout
 
 block content
+
   div.text-center
+    br
     form(class="form-signin" method="POST" action="/users/login")
       #error
         if error
@@ -14,9 +16,11 @@ block content
       label( for="inputId" class="sr-only") User Id:
       input(type="text" name="id" id="inputId" class="form-control" placeholder="ID" required autofocus)
 
+
       //-signIn button
       - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
       button(class=buttonClass type="submit") Sign in
+      br
 
     form(class="form-signin" method="POST" action="/users/signUp")
       #error
