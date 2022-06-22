@@ -14,7 +14,8 @@ export async function outputReportById(id, year, month) {
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-        let answer = await (client.db('bills').collection('cost').find( { 'id':id}).toArray());//error bug - don't return the right data
+        //get the database from the cost collection by id
+        let answer = await (client.db('bills').collection('cost').find( { 'id':id}).toArray());
         //for year report
         if (year != null && (month == null || month === '') ){
             return answer.filter((data) => {
@@ -37,6 +38,7 @@ export async function outputReportById(id, year, month) {
                 }
             });
         }
+
         //for all ID report
         console.log(answer);
         console.log('The report is for only id '+ id );

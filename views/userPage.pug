@@ -1,11 +1,7 @@
 doctype html
 html(lang='en')
     head
-        //meta(charset='utf-8')
-        //meta(name='viewport' content='width=device-width,\ initial-scale=1,\ shrink-to-fit=no')
-        //title
-        //link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
-        //link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css')
+
     body
         .container
             br
@@ -51,6 +47,7 @@ html(lang='en')
                 label( for="inputMonth" class="sr-only") Month:
                 input(type="text" name="month" id="inputMonth" class="form-control" placeholder="Month"  autofocus)
 
+
                 //-signIn button
                 - var buttonClass=['btn', 'btn-lg', 'btn-primary', 'btn-block'];
                 button(class=buttonClass type="submit") Get report
@@ -69,19 +66,19 @@ html(lang='en')
             table.table-striped.border-success
                 thead
                     tr
-                        th(data-field='name')
+                        th(data-field='name' data-sortable='true')
                             span.text-dark
                                 | Title
-                        th(data-field='des')
+                        th(data-field='des' data-sortable='true')
                             span.text-dark
                                 | Description
-                        th(data-field='cate')
+                        th(data-field='cate' data-sortable='true')
                             span.text-dark
                                 | Category
-                        th(data-field='sum')
+                        th(data-field='sum' data-sortable='true')
                             span.text-dark
                                 | Sum
-                        th(data-field='date')
+                        th(data-field='date' data-sortable='true')
                             span.text-dark
                                 | Date
             br

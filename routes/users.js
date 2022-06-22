@@ -13,7 +13,6 @@ usersRouter.post('/login', async function (req, res, next) {
   userID = parseInt(req.body.id);
   let ar = await outputReportById(userID);
   let sum= await getTotalSum(userID);
-  //res.render('userPage',{title:userID,message:userID,info:JSON. stringify(ar),total_cost:sum});
   res.render('userPage',{title:userID,message:userID,info:ar,total_cost:sum});
 });
 
@@ -55,7 +54,6 @@ usersRouter.post('/login/report',async function(req, res, next){
   let month = req.body.month;
   let ar = await outputReportById(userID,year,month);
   let mes = 'Report for '+' '+ userID +' '+ 'date ' +' '+ year + '/' + month;
-  //res.render('dateReport',{title:'Report for '+ userID,message:mes,info:JSON. stringify(ar)});
   res.render('dateReport',{title:'Report for '+ userID,message:mes,info:ar});
 });
 

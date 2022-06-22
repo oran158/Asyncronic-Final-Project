@@ -1,9 +1,4 @@
-//html
-//    head
-//        title=title
-//    body
-//        h1=message
-//        p=info
+
 doctype html
 html(lang='en')
 head
@@ -24,19 +19,19 @@ body
       table.table-striped.border-success
         thead.thead-info
           tr
-              th(data-field='name')
+              th(data-field='name' data-sortable='true')
                   span.text-dark
                       | Title
-              th(data-field='des')
+              th(data-field='des' data-sortable='true')
                   span.text-dark
                       | Description
-              th(data-field='cate')
+              th(data-field='cate' data-sortable='true')
                   span.text-dark
                       | Category
-              th(data-field='sum')
+              th(data-field='sum' data-sortable='true')
                   span.text-dark
                       | Sum
-              th(data-field='date')
+              th(data-field='date' data-sortable='true')
                   span.text-dark
                       | Date
       br

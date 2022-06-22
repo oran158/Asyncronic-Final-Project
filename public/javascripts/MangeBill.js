@@ -27,13 +27,6 @@ export class Product//class of product
     }
 }
 
-export class Item//class of category of product
-{
-    constructor(name,cate) {
-        this.name = name;
-        this.cate=cate;
-    }
-}
 
 //function that add product to cost collections
 export async function addProduct(product)
@@ -72,8 +65,8 @@ export async function addProduct(product)
 
 //function that add user to user collections
 export default async function addUser(user) {
-    const client = new MongoClient(uri);//create object that can talk with mongodb
-
+    //create object that can talk with mongodb
+    const client = new MongoClient(uri);
     try {
         // Connect to the MongoDB cluster
         await client.connect();
@@ -87,26 +80,12 @@ export default async function addUser(user) {
         await client.close();}
 }
 
-//function that add item to categories collections
-export async function addCat(item) {
-    const client = new MongoClient(uri);//create object that can talk with mongodb
-
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
-        // Make the appropriate DB calls
-        console.log('item has just added to categories collection');
-        await client.db('bills').collection('categories').insertOne(item);
-    } catch (e) {
-        console.error(e.errmsg+'the bills addition has just failed');
-    } finally {
-        await client.close();
-    }
-}
 //function that crate total sum to user that is not exist in information collection
 async function createTotalSum(userid,client)
 {
+    //we call to total sum function to get the total sum of the id from cost collection
     let total=await totalSum(userid,client)
+    //we insert the total sum to information collection
     await client.db('bills').collection('information').insertOne({'id':userid,'total_sum':total});
 }
 
