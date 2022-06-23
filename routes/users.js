@@ -25,11 +25,11 @@ usersRouter.post('/signUp', async function (req, res, next) {
 usersRouter.post('/signUp/addUser', async function (req, res, next) {
   console.log('user sign up');
   let id = parseInt(req.body.id);
-  let first_name = req.body.firstname;
-  let last_name = req.body.lastname;
+  let firstN = req.body.firstName;
+  let lastN = req.body.lastName;
   let birth = parseInt(req.body.birth);
   let material = req.body.material;
-  let user = new User(id,first_name,last_name,birth,material);
+  let user = new User(id,firstN,lastN,birth,material);
   await addUser(user);
   res.render('alertAddUser',{title:id,message:"Please confirm your ID"});
 });
@@ -42,7 +42,7 @@ usersRouter.post('/login/addProduct',async function(req, res, next){
   let cate = req.body.cate;
   let des = req.body.des;
   let prod = new Product(userID,name,sum,cate,date,des);
-  let info = 'Product (name: ' + name + ', description: ' + des + ') has been added for ' + userID
+  let info = 'Product (name: ' + name + ', description: ' + des + ') has been added for ' + userID;
   await addProduct(prod);
   res.render('alertAddProduct',{title:'User ' + userID,message:'User ' + userID,info:info});
 });

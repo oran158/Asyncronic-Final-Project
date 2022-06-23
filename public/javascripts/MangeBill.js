@@ -1,15 +1,15 @@
 import {MongoClient} from "mongodb";
 
-const Oran="mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test";
-const Yonatan ="mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test"
+const Oran='mongodb+srv://oran:co97@finalproject.gyyd2.mongodb.net/test';
+const Yonatan ='mongodb+srv://YonatanAvizov:Sa0725rh@moneymanger.w0mn0.mongodb.net/test';
 const uri = Yonatan;
 
 export class User//class of user
 {
-    constructor(id,firstname,lastname,birth,material) {
+    constructor(id,firstName,lastName,birth,material) {
         this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.birth = birth;
         this.material = material;
     }
@@ -66,13 +66,14 @@ export async function addProduct(product)
 //function that add user to user collections
 export default async function addUser(user) {
     //create object that can talk with mongodb
+    let userId=user.id;
     const client = new MongoClient(uri);
     try {
         // Connect to the MongoDB cluster
         await client.connect();
         // Make the appropriate DB calls
         await client.db('bills').collection('user').insertOne(user);
-        await createTotalSum(user,client);
+        await createTotalSum(userId,client);
         console.log('user has just added to user collection');
     } catch (e) {
         console.error(e.errmsg+'the user addition has just failed');

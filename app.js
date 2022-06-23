@@ -22,7 +22,7 @@ app.use(express.static('public'));
 app.use('/costs', costRouter);
 app.use('/users',usersRouter);
 app.get('', async (req, res) => {
-    res.render('homepage')
+    res.render('homepage');
 });
 
 //start the server that doesn't listen to client ger request
