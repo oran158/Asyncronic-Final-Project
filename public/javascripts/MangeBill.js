@@ -42,13 +42,9 @@ export async function addProduct(product)
         console.log('product has just added to cost collection');
     } catch (e) {
         console.error(e.errmsg+'the product addition has just failed');
-    } finally {
-        await client.close();
     }
 
     try {
-        // Connect to the MongoDB cluster
-        await client.connect();
         // update in information collection the new total sum by id
         let report= await client.db('bills').collection('information').findOneAndUpdate({'id':id},{$inc:{'total_sum':sum}});
         if(report == null)
