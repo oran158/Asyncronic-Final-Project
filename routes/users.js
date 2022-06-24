@@ -1,11 +1,9 @@
 import express from 'express';
-import addUser, {addProduct, getTotalSum, Product, User} from "../public/javascripts/MangeBill.js";
+import addUser, {User} from "../public/javascripts/MangeBill.js";
 const usersRouter = express.Router();
-
-
 /* POST users listing. */
-
 //getting from the page all the details of the new user => calling to add user function => return of succeed message
+
 usersRouter.post('/signUp', async function (req, res, next) {
   res.render('userSignUp',{title:'Sign up',message:'Welcome, Please sign up'});
 });
