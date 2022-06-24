@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 // Static Files
 app.use(express.static('public'));
 
-app.use('/costs', costRouter);
+app.use('/cost', costRouter);
 app.use('/users',usersRouter);
 app.get('', async (req, res) => {
     res.render('homepage');
