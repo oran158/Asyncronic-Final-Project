@@ -26,7 +26,7 @@ app.get('', async (req, res) => {
 });
 
 //start the server that doesn't listen to client ger request
-app.listen(app.get('port','0.0.0.0'),async  function () {
+app.listen(app.get('port'),async  function () {
     console.info('listening on port ' + app.get('port'));
   });
 
